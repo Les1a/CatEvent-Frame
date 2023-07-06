@@ -45,10 +45,11 @@ def cat_ef(root, output_path):
 
 
 if __name__ == '__main__':
-    rootpath = './reconstruction_lightflash'
-    output = os.path.join(rootpath, 'cat_output')
 
     for dirs in os.listdir('./'):
         if os.path.isdir(os.path.join('./', dirs)) and dirs.startswith('re'):
-            print(os.path.join('.', dirs), end=' ')
+            rootpath = os.path.join('./', dirs)
+            output = os.path.join(rootpath, 'cat_output')
+            os.makedirs(output, exist_ok=True)
+            print(dirs, end=' ')
             cat_ef(rootpath, output)
